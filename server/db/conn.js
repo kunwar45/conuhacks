@@ -4,9 +4,13 @@ const client = new MongoClient(Db, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
- 
+
+async function queryUser (user){
+  const found = await client.db("users").collection("registry").findOne({ username: user });
+  return found;
+}
+
 var _db;
- 
 module.exports = {
   connectToServer: function (callback) {
     client.connect(function (err, db) {
@@ -23,4 +27,5 @@ module.exports = {
   getDb: function () {
     return _db;
   },
+  queryUser
 };

@@ -10,7 +10,7 @@ const dbo = require("../db/conn");
  
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
- 
+
  
 // // This section will help you get a list of all the users.
 // routes.route("/register").get(function (req, res) {
@@ -43,10 +43,23 @@ routes.route("/register/add").post(function (req, response) {
    _id: req.body.username,
    password: req.body.password
  };
- db_connect.collection("registry").insertOne(myobj, function (err, res) {
-   if (err) throw err;
-   response.json(res);
- });
+
+ try{
+  db_connect.collection("registry").insertOne(myobj, function (err, res) {
+    if (err){
+      response.json(err)
+      
+    }
+    else{
+      console.log("sdasdasd")
+      response.json(res);
+    }
+  });
+ } catch (e) {
+   
+ }
+
+ 
 });
  
 // // This section will help you update a frame by id.
