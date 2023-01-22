@@ -3,7 +3,7 @@ const express = require("express");
 // framesRoutes is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /frames.
-const frameRoutes = express.Router();
+const routes = express.Router();
  
 // This will help us connect to the database
 const dbo = require("../db/conn");
@@ -13,7 +13,7 @@ const ObjectId = require("mongodb").ObjectId;
  
  
 // This section will help you get a list of all the frames.
-frameRoutes.route("/frame").get(function (req, res) {
+routes.route("/frame").get(function (req, res) {
  let db_connect = dbo.getDb("users");
  db_connect
    .collection("frames")
@@ -25,7 +25,7 @@ frameRoutes.route("/frame").get(function (req, res) {
 });
  
 // This section will help you get a single frame by id
-frameRoutes.route("/frame/:id").get(function (req, res) {
+routes.route("/frame/:id").get(function (req, res) {
  let db_connect = dbo.getDb();
  let myquery = { _id: ObjectId(req.params.id) };
  db_connect
@@ -37,7 +37,7 @@ frameRoutes.route("/frame/:id").get(function (req, res) {
 });
  
 // This section will help you create a new frames.
-frameRoutes.route("/frame/add").post(function (req, response) {
+routes.route("/frame/add").post(function (req, response) {
  let db_connect = dbo.getDb();
  let myobj = {
    user: req.body.user,
@@ -51,7 +51,7 @@ frameRoutes.route("/frame/add").post(function (req, response) {
 });
  
 // This section will help you update a frame by id.
-frameRoutes.route("/update/:id").post(function (req, response) {
+routes.route("/update/:id").post(function (req, response) {
  let db_connect = dbo.getDb();
  let myquery = { _id: ObjectId(req.params.id) };
  let newvalues = {
@@ -71,7 +71,7 @@ frameRoutes.route("/update/:id").post(function (req, response) {
 });
  
 // This section will help you delete a frame
-frameRoutes.route("/:id").delete((req, response) => {
+routes.route("/:id").delete((req, response) => {
  let db_connect = dbo.getDb();
  let myquery = { _id: ObjectId(req.params.id) };
  db_connect.collection("frames").deleteOne(myquery, function (err, obj) {
@@ -81,4 +81,4 @@ frameRoutes.route("/:id").delete((req, response) => {
  });
 });
  
-module.exports = frameRoutes;
+module.exports = routes;

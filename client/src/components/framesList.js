@@ -72,7 +72,6 @@ const Frame = (props) => (
         <table className="table table-striped" style={{ marginTop: 20 }}>
           <thead>
             <tr>
-              <th>Name</th>
               <th>User</th>
               <th>Time</th>
               <th>Emotion</th>
