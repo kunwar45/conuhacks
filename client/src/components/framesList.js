@@ -25,7 +25,7 @@ const Frame = (props) => (
     // This method fetches the Frames from the database.
     useEffect(() => {
       async function getFrames() {
-        const response = await fetch(`http://localhost:5000/frame/`);
+        const response = await fetch(`http://localhost:4000/frame/`);
     
         if (!response.ok) {
           const message = `An error occurred: ${response.statusText}`;

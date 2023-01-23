@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 // We import all the components we need in our app
 import FrameList from "./components/framesList";
 import Register from "./components/registerPanel";
+import WebCam from "./components/webcam";
  
 const App = () => {
   
@@ -19,7 +20,7 @@ const App = () => {
        <Route exact path="/register" element={<Register />} />
        {/* <Route exact path="/login" /> */}
        <Route exact path="/callback" />
-       <Route exact path="/" />
+       <Route exact path="/" element = {<WebCam />}/>
        {/* <Route path="/edit/:id" element={<Edit />} />
        <Route path="/create" element={<Create />} /> */}
      </Routes>
