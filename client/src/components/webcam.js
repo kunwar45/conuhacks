@@ -22,7 +22,7 @@ import { Link } from "react-router-dom";
 	
 	
 	const getVideo = () => {
-		navigator.mediaDevices.getUserMedia({video: {width:1920, height:1080}}).then(stream =>{
+		navigator.mediaDevices.getUserMedia({video: {width:720, height:1080}}).then(stream =>{
 			let video = videoRef.current;
 			video.srcObject = stream;
 			video.play();
@@ -31,8 +31,8 @@ import { Link } from "react-router-dom";
 		})
 	}
 
-	const takePhoto = () => {	
-		// var dataURL = 0;
+	const takePhoto = () => {
+		let dataURL = 0
 		const size = 244;
 		let video = videoRef.current;
 		let canvas = document.createElement("canvas");
@@ -42,7 +42,8 @@ import { Link } from "react-router-dom";
 
 		let ctx = canvas.getContext('2d');
 		ctx.drawImage(video,0,0,size,size);
-		var dataURL = canvas.toDataURL("image.jpg");
+		console.log(canvas.toDataURL())
+		dataURL = canvas.toDataURL()
 		sendImage(dataURL);
 	}
 
