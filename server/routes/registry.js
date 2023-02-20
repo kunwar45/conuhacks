@@ -12,7 +12,7 @@ const dbo = require("../db/conn");
 const ObjectId = require("mongodb").ObjectId;
 
  
-// // This section will help you get a list of all the users.
+// This section will help you get a list of all the users.
 // routes.route("/register").get(function (req, res) {
 //  let db_connect = dbo.getDb("users");
 //  db_connect
