@@ -1,0 +1,23 @@
+.container {
+    align-items: center;
+    align-content: center;
+    
+}
+
+.title {
+    font-size: 50;
+}
+
+.field {
+    font-size: 20;
+    padding-right: 30px;
+    
+}
+
+.form-group {
+    padding-bottom: 20px;
+}
+
+header {
+    padding-bottom: 30px;
+}
